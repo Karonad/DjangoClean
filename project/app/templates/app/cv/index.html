@@ -1,0 +1,36 @@
+{% extends 'app/base_layout.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Cv</title>
+{% endblock %}
+
+{% block styles %}
+
+{% endblock %}
+
+{% block content %}
+<div class="d-flex flex-wrap justify-content-around">
+{% for cv in cvs %}
+<div class="card" style="width: 18rem; margin:10px">
+  <div class="card-body">
+    <h5 class="card-title">{{cv.lastname }} {{cv.firstname}}</h5>
+    <p>{{cv.age}} ans</p>
+    <p>{{cv.city}}</p>
+    <p>{{cv.sector}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{cv.mail}}</li>
+    <li class="list-group-item">{{cv.phone_number}}</li>
+    <li class="list-group-item">permis : {{cv.permis}}</li>
+  </ul>
+  <div class="card-body text-center">
+    <a href="/cv/{{cv.id}}" class="card-link ">Details</a>
+  </div>
+</div>
+{% endfor %}
+</div>
+
+{% endblock %}
+{% block js %}
+{% endblock %}

@@ -1,0 +1,270 @@
+{% extends 'app/base_layout.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Cv</title>
+{% endblock %}
+
+{% block styles %}
+{% endblock %}
+
+{% block content %}
+{% comment %} {% for item in data %}
+    <p>{{item}}</p>
+{% endfor%} {% endcomment %}
+<div class="bg-white p-5"> 
+    <form class="row g-3" action="/cv/ajout/" method="POST">
+    {% csrf_token %}
+        <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Nom</label>
+            <input type="text" name="lastname" class="form-control text-dark" id="inputEmail4">
+        </div>
+        <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Prenom</label>
+            <input type="text"name="firstname" class="form-control text-dark" id="inputPassword4">
+        </div>
+        <div class="col-6">
+            <label for="inputAddress" class="form-label">Email</label>
+            <input type="email" name="mail" class="form-control text-dark" id="inputAddress" >
+        </div>
+        <div class="col-6">
+            <label for="inputAddress2" class="form-label">Telephone</label>
+            <input type="text" name="phone_number" class="form-control text-dark" id="inputAddress2">
+        </div>
+        <div class="col-md-4">
+            <label for="inputCity" class="form-label">City</label>
+            <input type="text" name="city" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-4">
+            <label for="inputCity" class="form-label">Secteur pro.</label>
+            <input type="text" name="sector" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-4">
+            <label for="inputCity" class="form-label">Age</label>
+            <input type="number" name="age" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-12">
+            <label for="inputCity" class="form-label">Permis</label>
+            <select class="form-select" name="permis" aria-label="Default select example">
+                <option selected>Choix</option>
+                <option value="1">Oui</option>
+                <option value="0">Non</option>
+            </select>  
+        </div>
+        <hr>
+        <h2>Experiences : </h2>
+        <h3>1er experience : </h3>
+        <div class="col-md-6">
+            <label for="inputCity" class="form-label">Intitulé</label>
+            <input type="text" name="exp_title[0]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Date de début</label>
+            <input type="date" name="exp_start[0]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Date de fin</label>
+            <input type="date" name="exp_end[0]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-12">
+            <label for="inputCity" class="form-label">Details</label>
+            <textarea name="exp_content[0]" class="form-control text-dark" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <h3>2eme experience : </h3>
+        <div class="col-md-6">
+            <label for="inputCity" class="form-label">Intitulé</label>
+            <input type="text" name="exp_title[1]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Date de début</label>
+            <input type="date" name="exp_start[1]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Date de fin</label>
+            <input type="date" name="exp_end[1]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-12">
+            <label for="inputCity" class="form-label">Details</label>
+            <textarea name="exp_content[1]" class="form-control text-dark" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <h3>3eme experience : </h3>
+        <div class="col-md-6">
+            <label for="inputCity" class="form-label">Intitulé</label>
+            <input type="text" name="exp_title[2]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Date de début</label>
+            <input type="date" name="exp_start[2]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Date de fin</label>
+            <input type="date" name="exp_end[2]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-12">
+            <label for="inputCity" class="form-label">Details</label>
+            <textarea name="exp_content[2]" class="form-control text-dark" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+
+        <hr>
+        <h2>Formations : </h2>
+        <h3>1er formation : </h3>
+        <div class="col-md-6">
+            <label for="inputCity" class="form-label">Intitulé</label>
+            <input type="text" name="form_title[0]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Date de début</label>
+            <input type="date" name="form_start[0]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Date de fin</label>
+            <input type="date" name="form_end[0]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-12">
+            <label for="inputCity" class="form-label">Details</label>
+            <textarea name="form_content[0]" class="form-control text-dark" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <h3>2eme formation : </h3>
+        <div class="col-md-6">
+            <label for="inputCity" class="form-label">Intitulé</label>
+            <input type="text" name="form_title[1]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Date de début</label>
+            <input type="date" name="form_start[1]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Date de fin</label>
+            <input type="date" name="form_end[1]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-12">
+            <label for="inputCity" class="form-label">Details</label>
+            <textarea name="form_content[1]" class="form-control text-dark" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <h3>3eme formation : </h3>
+        <div class="col-md-6">
+            <label for="inputCity" class="form-label">Intitulé</label>
+            <input type="text" name="form_title[2]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Date de début</label>
+            <input type="date" name="form_start[2]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Date de fin</label>
+            <input type="date" name="form_end[2]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-12">
+            <label for="inputCity" class="form-label">Details</label>
+            <textarea name="form_content[2]" class="form-control text-dark" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+    
+        <hr>
+        <h2>Compétences : </h2>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Compétence</label>
+            <input type="text" name="skill[0]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Niveau</label>
+            <input type="range" name="level[0]" class="form-range" min="0" max="5" id="customRange2">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Compétence</label>
+            <input type="text" name="skill[1]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Niveau</label>
+            <input type="range" name="level[1]" class="form-range" min="0" max="5" id="customRange2">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Compétence</label>
+            <input type="text" name="skill[2]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Niveau</label>
+            <input type="range" name="level[2]" class="form-range" min="0" max="5" id="customRange2">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Compétence</label>
+            <input type="text" name="skill[3]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Niveau</label>
+            <input type="range" name="level[3]" class="form-range" min="0" max="5" id="customRange2">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Compétence</label>
+            <input type="text" name="skill[4]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Niveau</label>
+            <input type="range" name="level[4]" class="form-range" min="0" max="5" selected="0" id="customRange2">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Compétence</label>
+            <input type="text" name="skill[5]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Niveau</label>
+            <input type="range" name="level[5]" class="form-range" min="0" max="5" id="customRange2">
+        </div>
+        <hr>
+        <h2>Centre d'interet : </h2>
+       <div class="col-md-3">
+            <label for="inputCity" class="form-label">Intéret</label>
+            <input type="text" name="hobby[]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Intéret</label>
+            <input type="text" name="hobby[]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Intéret</label>
+            <input type="text" name="hobby[]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Intéret</label>
+            <input type="text" name="hobby[]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Intéret</label>
+            <input type="text" name="hobby[]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Intéret</label>
+            <input type="text" name="hobby[]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Intéret</label>
+            <input type="text" name="hobby[]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Intéret</label>
+            <input type="text" name="hobby[]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Intéret</label>
+            <input type="text" name="hobby[]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Intéret</label>
+            <input type="text" name="hobby[]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Intéret</label>
+            <input type="text" name="hobby[]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">Intéret</label>
+            <input type="text" name="hobby[]" class="form-control text-dark" id="inputCity">
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+{% block js %}
+{% endblock %}

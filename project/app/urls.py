@@ -1,10 +1,11 @@
 from django.conf.urls import url
 from django.urls import path
-
-from . import views # import views so we can use them in urls.
-
+from . import views 
 
 urlpatterns = [
-    path('', views.index), # "/store" will call the method "index" in "views.py"
-    path('contact/', views.contact), # "/store" will call the method "index" in "views.py"
+    path('', views.index), 
+    path('contact/', views.contact), 
+    path('cv/', views.cv), 
+    path('cv/<int:id>/', views.cv_show), 
+    path('cv/ajout/', views.cv_ajout), 
 ]
