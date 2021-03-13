@@ -7,7 +7,7 @@ class Fruits(models.Model):
 class Contact(models.Model):
     name = models.CharField(max_length=100)
     mail = models.EmailField()
-    message = models.CharField(max_length=500)
+    message = models.CharField(max_length=2000)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
 
@@ -30,14 +30,14 @@ class Skill(models.Model):
 
 class Experience(models.Model):
     title = models.CharField(max_length=100)
-    content = models.CharField(max_length=500)
+    content = models.CharField(max_length=2000)
     start_at = models.DateTimeField(auto_now_add=False)
     end_at = models.DateTimeField(auto_now_add=False)
     cv = models.ForeignKey(Cv, on_delete=models.CASCADE)
 
 class Formation(models.Model):
     title = models.CharField(max_length=100)
-    content = models.CharField(max_length=500)
+    content = models.CharField(max_length=2000)
     start_at = models.DateTimeField(auto_now_add=False)
     end_at = models.DateTimeField(auto_now_add=False)
     cv = models.ForeignKey(Cv, on_delete=models.CASCADE)

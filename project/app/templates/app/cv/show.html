@@ -1,8 +1,9 @@
 {% extends 'app/base_layout.html' %}
 {% load static %}
+{% load mathfilters %}
 
 {% block title %}
-    <title>Cv : {{cv.firstname}} {{cv.lastname}}</title>
+    <title>Cv : {{records.cv.firstname}} {{records.cv.lastname}}</title>
 {% endblock %}
 
 {% block styles %}
@@ -10,7 +11,65 @@
 {% endblock %}
 
 {% block content %}
-<h1>dqsqs</h1>
+<div class="container bg-white p-5">
+    <h1>{{records.cv.firstname}} {{records.cv.lastname}}</h1>
+    <h4>{{records.cv.age}} ans</h4>
+    <h4> secteur : {{records.cv.sector}}</h4>
+    <div class="row">
+        <div class="col-md-3 text-center"><strong>Email</strong> : {{records.cv.mail}}</div>
+        <div class="col-md-3 text-center"><strong>Telephone</strong> : {{records.cv.phone_number}}</div>
+        <div class="col-md-3 text-center"><strong>Ville</strong> : {{records.cv.city}}</div>
+        <div class="col-md-3 text-center"><strong>Permis</strong> : {{records.cv.permis}}</div>
+    </div>
+    <br>
+    <h1>Formations</h1>
+    {% for item in records.formations %}
+    <div class="row">
+        <div class="col-md-6"><strong>{{item.title}}</strong></div>
+        <div class="col-md-6"><strong>{{item.start_at}} / {{item.end_at}}</strong></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">{{item.content}}</div>
+    </div>
+    <br>
+    {% endfor %}
+    <br>
+    <hr>
+    <h1>Experiences</h1>
+    {% for item in records.experiences %}
+    <div class="row">
+        <div class="col-md-6"><strong>{{item.title}}</strong></div>
+        <div class="col-md-6"><strong>{{item.start_at}} / {{item.end_at}}</strong></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">{{item.content}}</div>
+    </div>
+    <br>
+    {% endfor %}
+    <hr>
+    <h1>Compétences</h1>
+    <div class="">
+        {% for item in records.skills %}
+            <h1 class="text-center"><span class="badge bg-secondary">{{item.name}}</span></h1>
+            <br>
+            <div class="progress">
+            {% with test=item.level %}
+                <div class="progress-bar text-center" role="progressbar" style="width:{{test|div:5|mul:100}}%" aria-valuenow="{{item.level}}" aria-valuemin="0" aria-valuemax="5">{{item.level}}</div>
+            {% endwith %}
+            </div>
+            <br>
+        {% endfor %}
+    </div>
+    <hr>
+    <h1>Centres d'interet</h1>
+    <div class="d-flex justify-content-evenly flex-wrap">
+        {% for item in records.hobbies %}
+            <h1><span class="badge bg-secondary">{{item.name}}</span></h1>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
 
 {% block js %}

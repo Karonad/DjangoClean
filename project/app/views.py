@@ -141,5 +141,20 @@ def cv_ajout(request):
     return render(request, 'app/cv/ajout.html')
 
 def cv_show(request, id=None):
+    records = {}
     cv = Cv.objects.get(id= id)
-    return render(request, 'app/cv/show.html', {'cv': cv})
+    if cv:
+        records['cv'] = cv
+    hobbies = Hobby.objects.all().filter(cv= id)
+    if hobbies:
+        records['hobbies'] = hobbies
+    skills = Skill.objects.all().filter(cv_id= id)
+    if skills:
+        records['skills'] = skills
+    experiences = Experience.objects.all().filter(cv_id= id)
+    if experiences:
+        records['experiences'] = experiences
+    formations = Formation.objects.all().filter(cv_id= id)
+    if formations:
+        records['formations'] = formations
+    return render(request, 'app/cv/show.html', {'records': records})
